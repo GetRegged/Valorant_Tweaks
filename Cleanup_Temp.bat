@@ -1,3 +1,5 @@
+MODE 1000,1000
+
 REM Zurücksetzen und Löschen des IP-Caches
 ipconfig /flushdns
 ipconfig /release
@@ -13,11 +15,13 @@ netsh http flush logbuffer
 REM Löschen von Cache und temporären Dateien
 del /s /f /q "%AppData%\Discord\Cache"
 del /s /f /q "%AppData%\Discord\Code Cache"
-del /s /f /q "%AppData%\Local\Microsoft\Windows\INetCache"
-del /s /f /q "%AppData%\Local\Microsoft\Windows\INetCookies"
+del /s /f /q "%LocalAppData%\Google\Chrome\User Data\Default\Cache"
 del /s /f /q "%LocalAppData%\Microsoft\Windows\Explorer\*.db"
 del /s /f /q "%LocalAppData%\Microsoft\Windows\Explorer\thumbcache_*.db"
+del /s /f /q "%LocalAppData%\Microsoft\Windows\INetCache"
+del /s /f /q "%LocalAppData%\Microsoft\Windows\INetCookies"
 del /s /f /q "%LocalAppData%\Microsoft\Windows\WebCache"
+del /s /f /q "%ProgramData%\Microsoft\Windows\Installer"
 del /s /f /q "%ProgramData%\USOPrivate\UpdateStore"
 del /s /f /q "%ProgramData%\USOShared\Logs"
 del /s /f /q "%systemdrive%\$Recycle.Bin"
