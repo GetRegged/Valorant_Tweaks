@@ -1,11 +1,6 @@
-MODE 60,10
-
 @echo off
-echo ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-echo ;                                    ;
-echo ;                                    ;
-echo ;                                    ;
-echo ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+MODE 16,2
+echo CLEANING...
 
 REM Zurücksetzen und Löschen des IP-Caches
 ipconfig /flushdns
@@ -61,4 +56,7 @@ FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V
 IF (%adminTest%)==(Access) goto noAdmin
 for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G")
 
+cls
+echo DONE!
+timeout /t 3 /nobreak >nul
 exit
