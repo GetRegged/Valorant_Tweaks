@@ -63,7 +63,7 @@ cls
 echo DONE!
 timeout /t 3 /nobreak >nul
 cls
-echo CLOSING IN 3
+echo CLOSING IN 2
 timeout /t 1 /nobreak >nul
 cls
 echo CLOSING IN 2
