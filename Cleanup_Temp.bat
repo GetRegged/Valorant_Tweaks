@@ -56,6 +56,7 @@ FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V >nul 2>nul
 IF (%adminTest%)==(Access) goto noAdmin >nul 2>nul
 for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G") >nul 2>nul
 
+timeout /t 3 /nobreak >nul
 cls
 echo DONE!
 timeout /t 3 /nobreak >nul
