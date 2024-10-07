@@ -1,6 +1,7 @@
 @echo off
 MODE 16,2
-echo TAMING...
+echo TAMING TEMPFILES
+echo PLEASE BE PATIENT
 
 REM Zurücksetzen und Löschen des IP-Caches
 ipconfig /flushdns >nul 2>nul
