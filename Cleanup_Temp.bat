@@ -47,16 +47,18 @@ rd /s /q "%SystemDrive%\AMD" >nul 2>nul
 rd /s /q "%SystemDrive%\OneDriveTemp" >nul 2>nul
 rd /s /q "%SystemDrive%\System Volume Information" >nul 2>nul
 
-auditpol /set /subcategory:"Filtering Platform Connection" /success:disable /failure:enable
 FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V
 IF (%adminTest%)==(Access) goto noAdmin
-for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G") >nul 2>nul
+for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G")
 
-FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V
-IF (%adminTest%)==(Access) goto noAdmin
-for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G"
+:do_clear
+wevtutil.exe cl %1
+goto :end
 
-timeout /t 3 /nobreak >nul
+:noAdmin
+goto :end
+
+:end
 cls
 echo DONE!
 timeout /t 3 /nobreak >nul
