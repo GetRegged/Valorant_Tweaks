@@ -9,39 +9,47 @@ netsh winsock reset
 netsh advfirewall reset
 netsh branchcache reset
 netsh http flush logbuffer
-del "%LocalAppData%\Microsoft\Windows\INetCache\." /s /f /q
-del "%AppData%\Local\Microsoft\Windows\INetCookies\." /s /f /q
-del "%temp%" /s /f /q
-del "%AppData%\Discord\Cache\." /s /f /q
-del "%AppData%\Discord\Code Cache\." /s /f /q
-del "%ProgramData%\USOPrivate\UpdateStore" /s /f /q
-del "%ProgramData%\USOShared\Logs" /s /f /q
-del "C:\Windows\System32\SleepStudy" /s /f /q
-del "%WINDIR%\Logs" /s /f /q
-del "%WINDIR%\Installer\$PatchCache$" /s /f /q
-rmdir /S /Q "%WINDIR%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization"
-rmdir /S /Q "%AppData%\Local\Microsoft\Windows\INetCache\"
-rmdir /S /Q "%AppData%\Local\Microsoft\Windows\INetCookies"
-rmdir /S /Q "%LocalAppData%\Microsoft\Windows\WebCache"
-rmdir /S /Q "%AppData%\Local\Temp\"
-rmdir /S /Q "%AppData%\Discord\Cache"
-rmdir /S /Q "%AppData%\Discord\Code Cache"
-rmdir /S /Q "%SystemDrive%\$GetCurrent"
-rmdir /S /Q "%SystemDrive%\$SysReset"
-rmdir /S /Q "%SystemDrive%\$Windows.~BT"
-rmdir /S /Q "%SystemDrive%\$Windows.~WS"
-rmdir /S /Q "%SystemDrive%\$WinREAgent"
-rmdir /S /Q "%SystemDrive%\OneDriveTemp"
-rd /s /q %WINDIR%\SoftwareDistribution\Download\
-rd /s /q %LocalAppData%\Temp
-rd /s /q %LocalAppData%\Temp\mozilla-temp-files
-rmdir /s /q "%SystemRoot%\System32\SleepStudy"
-rmdir /s /q "%SystemRoot%\System32\SleepStudy >nul 2>&1"
+del /f /q "%SystemRoot%\Logs\CBS\CBS.log"
+del /f /q "%SystemRoot%\Logs\DISM\DISM.log"
+del /s /f /q "%AppData%\Discord\Cache"
+del /s /f /q "%AppData%\Discord\Code Cache"
+del /s /f /q "%AppData%\Local\Microsoft\Windows\INetCookies"
+del /s /f /q "%LocalAppData%\Microsoft\Windows\Explorer\*.db"
+del /s /f /q "%LocalAppData%\Microsoft\Windows\Explorer\thumbcache_*.db"
+del /s /f /q "%ProgramData%\USOPrivate\UpdateStore"
+del /s /f /q "%ProgramData%\USOShared\Logs"
+del /s /f /q "%SystemRoot%\Prefetch"
+del /s /f /q "%SystemRoot%\temp"
+del /s /f /q "%systemdrive%\$Recycle.Bin\*.*"
+del /s /f /q "%systemdrive%\recycled\*.*"
+del /s /f /q "%temp%."
+del /s /f /q "%windir%\Installer\$PatchCache$"
+del /s /f /q "%windir%\Logs"
+del /s /f /q "%windir%\prefetch\*.*"
+rd /s /q "%AppData%\Discord\Cache"
+rd /s /q "%AppData%\Discord\Code Cache"
+rd /s /q "%AppData%\Local\Microsoft\Windows\INetCache"
+rd /s /q "%AppData%\Local\Microsoft\Windows\INetCookies"
+rd /s /q "%AppData%\Local\Temp\"
+rd /s /q "%LocalAppData%\Microsoft\Windows\WebCache"
+rd /s /q "%LocalAppData%\Temp"
+rd /s /q "%SystemDrive%\$GetCurrent"
+rd /s /q "%SystemDrive%\$SysReset"
+rd /s /q "%SystemDrive%\$WinREAgent"
+rd /s /q "%SystemDrive%\$Windows.~BT"
+rd /s /q "%SystemDrive%\$Windows.~WS"
+rd /s /q "%SystemDrive%\OneDriveTemp"
+rd /s /q "%SystemRoot%\System32\SleepStudy"
+rd /s /q "%windir%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization"
+rd /s /q "%windir%\SoftwareDistribution\Download"
+
 auditpol /set /subcategory:"Filtering Platform Connection" /success:disable /failure:enable
 FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V
 IF (%adminTest%)==(Access) goto noAdmin
 for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G") >nul 2>nul
+
 FOR /F "tokens=1,2*" %%V IN ('bcdedit') DO SET adminTest=%%V
 IF (%adminTest%)==(Access) goto noAdmin
 for /F "tokens=*" %%G in ('wevtutil.exe el') DO (call :do_clear "%%G")
+
 exit
