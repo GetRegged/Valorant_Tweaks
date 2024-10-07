@@ -1,4 +1,4 @@
-MODE 1000,1000
+MODE 100,100
 
 REM Zurücksetzen und Löschen des IP-Caches
 ipconfig /flushdns
