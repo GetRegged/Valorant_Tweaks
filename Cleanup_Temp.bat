@@ -1,3 +1,4 @@
+REM Zurücksetzen und Löschen des IP-Caches
 ipconfig /flushdns
 ipconfig /release
 ipconfig /renew
@@ -9,6 +10,7 @@ netsh winsock reset
 netsh branchcache reset
 netsh http flush logbuffer
 
+REM Löschen von Cache und temporären Dateien
 del /s /f /q "%AppData%\Discord\Cache"
 del /s /f /q "%AppData%\Discord\Code Cache"
 del /s /f /q "%AppData%\Local\Microsoft\Windows\INetCache"
@@ -27,6 +29,8 @@ del /s /f /q "%windir%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Wi
 del /s /f /q "%windir%\SoftwareDistribution\Download"
 del /s /f /q "%windir%\System32\SleepStudy"
 del /s /f /q "%windir%\temp"
+
+REM Löschen von temporären Systemordnern
 rd /s /q "%SystemDrive%\$GetCurrent"
 rd /s /q "%SystemDrive%\$SysReset"
 rd /s /q "%SystemDrive%\$WinREAgent"
