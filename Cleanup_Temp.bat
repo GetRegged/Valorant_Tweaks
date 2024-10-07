@@ -1,4 +1,11 @@
-MODE 100,100
+MODE 60,10
+
+@echo off
+echo ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo ;                                    ;
+echo ;                                    ;
+echo ;                                    ;
+echo ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 REM Zurücksetzen und Löschen des IP-Caches
 ipconfig /flushdns
