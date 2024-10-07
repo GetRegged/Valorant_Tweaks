@@ -36,6 +36,7 @@ rd /s /q "%SystemDrive%\$SysReset"
 rd /s /q "%SystemDrive%\$WinREAgent"
 rd /s /q "%SystemDrive%\$Windows.~BT"
 rd /s /q "%SystemDrive%\$Windows.~WS"
+rd /s /q "%SystemDrive%\Intel"
 rd /s /q "%SystemDrive%\OneDriveTemp"
 rd /s /q "%SystemDrive%\System Volume Information"
 
